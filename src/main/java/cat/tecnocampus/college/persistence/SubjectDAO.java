@@ -30,6 +30,11 @@ public class SubjectDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /*
+    TODO 2.1 SQL implement the following two methods. One gets all the subjects and the other gets one subject given its code
+            You can use ALL_SUBJECTS and SUBJECT_BY_CODE queries
+     */
+
     public List<Subject> getAllSubjects() {
         return jdbcTemplate.query(ALL_SUBJECTS, mapper);
     }

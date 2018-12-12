@@ -116,6 +116,12 @@ public class RegistrationDAO {
         jdbcTemplate.update(INSERT_REGISTRATION, registration.getStudent().getEmail(), registration.getAcademicYear(), registration.getDate());
     }
 
+    /*
+    TODO 2.2 You need to implement the following method. It saves the subjects of a registration into the convocation table (that is going to be used to save the
+    mark of the subject in the future [you don't need to worry about the mark here]). Note that a registration may have several subjects
+    You can use the sql statement in INSERT_CONVOCATION: As you see you need as parameters the date of the registration, the mail of the student,
+    and the code of the subject
+     */
     private void saveConvocations(Registration registration) {
         jdbcTemplate.batchUpdate(INSERT_CONVOCATION, new BatchPreparedStatementSetter() {
             @Override

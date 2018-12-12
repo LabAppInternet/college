@@ -11,6 +11,12 @@ import java.util.stream.Collectors;
 
 public class Student {
     @NotNull(message = "username cannot be null")
+    /*
+    TODO 4.1 The length of the name and secondName must be between 4 an 50 characters
+    The name and secondName must begin with capital letters: use the regrexp "^[A-Z].+"
+
+    A message must be given for all errors in all todos in this file
+     */
     @Size(min = 4, max = 15, message = "username must be between 4 an 15 characters long")
     @Pattern(regexp = "^\\w+", message = "must have alphanumeric characters")
     private String name;
@@ -20,11 +26,17 @@ public class Student {
     @Pattern(regexp = "^[A-Z].+", message = "Second name must match \\^[A-Z].*")
     private String secondName;
 
+    /*
+    TODO 4.2 The email must follow the regrexp "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b"
+     */
     @NotNull(message = "email cannot be null")
     @Pattern(regexp = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b",
             message = "Email must match \\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b")
     private String email;
 
+    /*
+    TODO 4.3 The password length must be between 4 and 50
+     */
     @NotNull(message = "password cannot be null")
     @Size(min = 4, max = 50, message = "Password must be between 4 an 15 characters long")
     private String password;

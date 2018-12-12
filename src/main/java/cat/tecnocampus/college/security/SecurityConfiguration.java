@@ -20,9 +20,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
+        /*
+    TODO 1 (Security): modify the matchers so that
+        * "/subjectList" and "/" can be accessed even by non logged in users
+        * "/lastRegistration", "/academicRecord", "/registerSubjects" can be accessed only by users with role USER
+        * "studentList" can be accessed only by users with role ADMIN
+     HINT: you may need to modify some of the already existing matchers, delete existing ones and/or add new ones. There is
+           a TRICKY one that makes the others useless
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/style/**").permitAll()
@@ -32,7 +41,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/lastRegistration").hasRole("USER")
                 .antMatchers("/academicRecord").hasRole("USER")
                 .antMatchers("/registerSubjects").hasRole("USER")
-                .antMatchers("/registerSubjects").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
