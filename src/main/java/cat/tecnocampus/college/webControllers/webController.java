@@ -80,13 +80,10 @@ public class webController {
     }
 
     /*
-    TODO 4.4 make sure that the student is correct and that when it is not to show the form again
+    TODO 4.4 make sure that the student is correct and that when it is not show the form again
      */
     @PostMapping("registerStudent")
-    public String registerStudentPost(@Valid Student student, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            return "registerStudent";
-        }
+    public String registerStudentPost(Student student) {
 
         college.registerStudent(student);
 

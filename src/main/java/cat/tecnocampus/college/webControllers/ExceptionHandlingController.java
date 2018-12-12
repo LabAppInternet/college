@@ -14,15 +14,13 @@ TODO 5 All annotations on this file have been removed. You need to write them ag
 exceptions that may occur
  */
 
-@ControllerAdvice
 public class ExceptionHandlingController {
 
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlingController.class);
 
     /*
-    This method must cope with RegisterPreviousLevelSubjectsFirst
+    TODO 5.1 This method must cope with RegisterPreviousLevelSubjectsFirst
      */
-    @ExceptionHandler(RegisterPreviousLevelSubjectsFirst.class)
     public String handlePreviousSubjectsNotSelected(HttpServletRequest request, Exception ex) {
 
         logger.error("Request: " + request.getRequestURL() + " raised " + ex);
@@ -32,9 +30,8 @@ public class ExceptionHandlingController {
     }
 
     /*
-    This method must cope with org.springframework.web.bind.MissingServletRequestParameterException
+    TODO 5.2 This method must cope with org.springframework.web.bind.MissingServletRequestParameterException
      */
-    @ExceptionHandler(org.springframework.web.bind.MissingServletRequestParameterException.class)
     public String handleNoSubjectSelected(HttpServletRequest request, Exception ex) {
 
         logger.error("Request: " + request.getRequestURL() + " raised " + ex);
@@ -45,10 +42,9 @@ public class ExceptionHandlingController {
 
 
     /*
-    This method must cope with StudentDoesNotExistsException, StudentWithNoRegistrations,
+    TODO 5.3 This method must cope with StudentDoesNotExistsException, StudentWithNoRegistrations,
     SubjectAlreadyRegisteredException, UnRegisteredSubjectException
      */
-    @ExceptionHandler({StudentDoesNotExistsException.class, StudentWithNoRegistrations.class, SubjectAlreadyRegisteredException.class, UnRegisteredSubjectException.class})
     public String handleManyErrors(Model model, HttpServletRequest request, Exception ex) {
         String url = request.getRequestURL().toString();
 

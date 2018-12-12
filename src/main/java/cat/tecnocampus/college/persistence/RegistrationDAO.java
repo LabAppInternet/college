@@ -118,26 +118,12 @@ public class RegistrationDAO {
 
     /*
     TODO 2.2 You need to implement the following method. It saves the subjects of a registration into the convocation table (that is going to be used to save the
-    mark of the subject in the future [you don't need to worry about the mark here]). Note that a registration may have several subjects
-    You can use the sql statement in INSERT_CONVOCATION: As you see you need as parameters the date of the registration, the mail of the student,
-    and the code of the subject
+    mark of the subject in the future [you don't need to worry about the mark here]). Note that a registration may have several subjects.
+    You can use the sql statement in INSERT_CONVOCATION: As you see you need as parameters the date of the registration "registration.getDate()",
+    the mail of the student "registration.getStudent().getEmail()", and the code of the subject "subject.getCode()".
+    See that subjects can be obtained as a list "registration.getSubjects()"
      */
     private void saveConvocations(Registration registration) {
-        jdbcTemplate.batchUpdate(INSERT_CONVOCATION, new BatchPreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-                Subject subject = registration.getSubjects().get(i);
-                preparedStatement.setDate(1, Date.valueOf(registration.getDate()));
-                preparedStatement.setString(2, registration.getStudent().getEmail());
-                preparedStatement.setString(3, subject.getCode());
-            }
-
-            @Override
-            public int getBatchSize() {
-                return registration.getSubjects().size();
-            }
-        });
-
     }
 
     public Registration queryLastRegistrationFromUser(String email) {
